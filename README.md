@@ -4,4 +4,4 @@ Provides a minimal starting point for [grunt](https://github.com/gruntjs/grunt) 
 
 Grunt file comes with ability to upload compiled files via FTP on save. To enable uncomment the following line:
 
-	// grunt.registerTask('buildcss', ['sass', 'cssc', 'autoprefixer', 'cssmin', 'ftp-deploy']);
+	// grunt.registerTask('buildcss', ['sass', 'autoprefixer', 'cssc', 'cssmin', 'ftp-deploy']);
