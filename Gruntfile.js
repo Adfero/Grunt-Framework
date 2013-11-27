@@ -16,6 +16,21 @@ module.exports = function(grunt) {
 		    }
 		},
 
+		csslint: {
+			strict: {
+				options: {
+					import: 2
+				},
+				src: ['build/css/main.css']
+			},
+			lax: {
+				options: {
+					import: false
+				},
+				src: ['build/css/main.css']
+			}
+		},
+
 		cssc: {
 			build: {
 				options: {
@@ -24,7 +39,7 @@ module.exports = function(grunt) {
 					consolidateMediaQueries: true
 				},
 				files: {
-					'dist/css/main.css': 'dist/css/main.css'
+					'build/css/main.css': 'build/css/main.css'
 				}
 			}
 		},
@@ -66,6 +81,9 @@ module.exports = function(grunt) {
 		},
 
 		autoprefixer: {
+			options: {
+				browsers: ['> 1%', 'last 2 versions', 'ff 17', 'opera 12.1', 'ie 9', 'ie 8', 'ie 7']
+			},
 		    single_file: {
 				src: 'build/css/main.css',
 				dest: 'build/css/main.css'
@@ -77,13 +95,24 @@ module.exports = function(grunt) {
 				src: ['build/js/libs/jquery-1.10.2.min.js', 'build/js/libs/moment.min.js'],
 				dest: 'dist/js/scripts.js'
 			}
+		},
+
+		cssUrlEmbed: {
+			encodeDirectly: {
+				files: {
+					'build/css/main.css': ['build/css/main.css']
+				}
+			}
 		}
 	});
 
 	grunt.registerTask('default', []);
 	// Local build only
-	grunt.registerTask('buildcss', ['sass','autoprefixer', 'cssc', 'cssmin']);
+	grunt.registerTask('buildcss', ['sass','autoprefixer', 'cssUrlEmbed', 'cssc', 'cssmin']);
+
+	// Local build w/ CSSLint
+	// grunt.registerTask('buildcss', ['sass','autoprefixer', 'cssUrlEmbed', 'cssc', 'csslint', 'cssmin']);
 	
 	// Build locally and push to remote
-	// grunt.registerTask('buildcss', ['sass', 'autoprefixer', 'cssc', 'cssmin', 'ftp-deploy']);
+	// grunt.registerTask('buildcss', ['sass', 'autoprefixer', 'cssUrlEmbed', 'cssc', 'cssmin', 'ftp-deploy']);
 }

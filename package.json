@@ -15,6 +15,7 @@
 		"grunt-ftp-deploy" : "*",
 		"grunt-autoprefixer" : "*",
 		"grunt-contrib-concat" : "*",
+		"grunt-css-url-embed" : "*",
 		"matchdep" : "*"
 	}
 }
