@@ -8,11 +8,7 @@ module.exports = function(grunt) {
 		watch: {
 		    js: {
 		    	files: ['build/js/base.js'],
-		    	tasks: ['uglify']
-		    },
-		    js: {
-		    	files: ['build/js/libs/**/*.js'],
-		    	tasks: ['concat']
+		    	tasks: ['uglify', 'concat']
 		    },
 		    css: {
 		    	files: ['build/sass/**/*.scss'],
@@ -70,10 +66,7 @@ module.exports = function(grunt) {
 		},
 
 		autoprefixer: {
-		    options: {
-		      // browsers: ['last 2 version', 'ie 8', 'ie 7']
-		    },
-			single_file: {
+		    single_file: {
 				src: 'build/css/main.css',
 				dest: 'build/css/main.css'
 			}
@@ -81,7 +74,7 @@ module.exports = function(grunt) {
 
 		concat: {
 			dist: {
-				src: ['build/js/libs/**/*.js'],
+				src: ['build/js/libs/jquery-1.10.2.min.js', 'build/js/libs/moment.min.js'],
 				dest: 'dist/js/scripts.js'
 			}
 		}
@@ -90,6 +83,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', []);
 	// Local build only
 	grunt.registerTask('buildcss', ['sass','autoprefixer', 'cssc', 'cssmin']);
+	
 	// Build locally and push to remote
 	// grunt.registerTask('buildcss', ['sass', 'autoprefixer', 'cssc', 'cssmin', 'ftp-deploy']);
 }
