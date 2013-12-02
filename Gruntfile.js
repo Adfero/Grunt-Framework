@@ -92,7 +92,7 @@ module.exports = function(grunt) {
 
 		concat: {
 			dist: {
-				src: ['build/js/libs/jquery-1.10.2.min.js', 'build/js/libs/moment.min.js'],
+				src: ['build/js/libs/jquery/jquery.min.js', 'build/js/libs/momentjs/min/moment.min.js'],
 				dest: 'dist/js/scripts.js'
 			}
 		},

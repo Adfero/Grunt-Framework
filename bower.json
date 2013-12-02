@@ -1,0 +1,9 @@
+{
+	"name" : "Project",
+	"version" : "0.1.0",
+	
+	"devDependencies" : {
+		"jquery" : "*",
+		"momentjs" : "*"
+	}
+}
