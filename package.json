@@ -18,6 +18,7 @@
 		"grunt-image-embed" : "*",
 		"grunt-spritesmith" : "*",
 		"grunt-contrib-imagemin" : "*",
+		"phantomjs" : "*",
 		"phantomjssmith" : "*",
 		"matchdep" : "*"
 	}
