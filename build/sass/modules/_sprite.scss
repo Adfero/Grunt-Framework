@@ -1,0 +1,54 @@
+  $fork-x: 0px;
+  $fork-y: 0px;
+  $fork-offset-x: 0px;
+  $fork-offset-y: 0px;
+  $fork-width: 32px;
+  $fork-height: 32px;
+  $fork-total-width: 66px;
+  $fork-total-height: 32px;
+  $fork-image: '../img/sprite.png';
+  $fork: 0px 0px 0px 0px 32px 32px 66px 32px '../img/sprite.png';
+  $twitter-x: 34px;
+  $twitter-y: 0px;
+  $twitter-offset-x: -34px;
+  $twitter-offset-y: 0px;
+  $twitter-width: 32px;
+  $twitter-height: 32px;
+  $twitter-total-width: 66px;
+  $twitter-total-height: 32px;
+  $twitter-image: '../img/sprite.png';
+  $twitter: 34px 0px -34px 0px 32px 32px 66px 32px '../img/sprite.png';
+
+  @mixin sprite-width($sprite) {
+    width: nth($sprite, 5);
+  }
+
+  @mixin sprite-height($sprite) {
+    height: nth($sprite, 6);
+  }
+
+  @mixin sprite-position($sprite) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x  $sprite-offset-y;
+  }
+
+  @mixin sprite-image($sprite) {
+    $sprite-image: nth($sprite, 9);
+    background-image: url(#{$sprite-image});
+  }
+
+  @mixin sprite($sprite) {
+    @include sprite-image($sprite); /*ImageEmbed:skip*/
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+  }
+
+.fork {
+  @include sprite($fork);
+}
+
+.twitter {
+  @include sprite($twitter);
+}

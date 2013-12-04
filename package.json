@@ -15,7 +15,10 @@
 		"grunt-ftp-deploy" : "*",
 		"grunt-autoprefixer" : "*",
 		"grunt-contrib-concat" : "*",
-		"grunt-css-url-embed" : "*",
+		"grunt-image-embed" : "*",
+		"grunt-spritesmith" : "*",
+		"grunt-contrib-imagemin" : "*",
+		"phantomjssmith" : "*",
 		"matchdep" : "*"
 	}
 }

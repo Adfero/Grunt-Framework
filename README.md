@@ -31,6 +31,12 @@ This framework uses [SASS](http://sass-lang.com/) to compile CSS and can be conf
 // grunt.registerTask('buildcss', ['sass','autoprefixer', 'cssUrlEmbed', 'cssc', 'csslint', 'cssmin']);
 ```
 
+By default **all** images, 32768 bytes or less, specified within stylesheets using the `background` property are encoded using base64. To exclude an image from being encoded add `/*ImageEmbed:skip*/` directly **after** the declaration.
+
+```
+background: url(image.gif); /*ImageEmbed:skip*/
+```
+
 Once a CSS file has been compiled it is minified in the **dist/css** directory.
 
 Likewise, this framework uses [JSLint](http://www.jslint.com/) each time **base.js** is saved prior to minifying all JavaScript in the **dist/js** directory.
@@ -40,7 +46,7 @@ Likewise, this framework uses [JSLint](http://www.jslint.com/) each time **base.
 This workflow allows developers to upload compiled files via FTP on save. To enable uncomment the following line in **Gruntfile.js**:
 
 ```
-// grunt.registerTask('buildcss', ['sass', 'autoprefixer', 'cssc', 'cssmin', 'ftp-deploy']);
+// grunt.registerTask('buildcss', ['sass', 'autoprefixer', 'imageEmbed', 'cssc', 'cssmin', 'ftp-deploy']);
 ```
 
 If the remote workflow is enabled files in the **dist** directory are uploaded to the host identified in the following section of **Gruntfile.js**
@@ -61,3 +67,17 @@ If the remote workflow is enabled files in the **dist** directory are uploaded t
 ```
 
 FTP usernames and passwords are stored in **.ftppass**
+
+## Image Optimization
+
+Images can be optimized using [OptiPNG](http://optipng.sourceforge.net/), [pngquant](http://pngquant.org/), [jpegtran](http://jpegclub.org/jpegtran/) and [gifsicle](http://www.lcdf.org/gifsicle).
+
+This task watches images located in the **build/img** directory and optimizes them and saves a copy in the **dist/img** directory.
+
+During optimization images in **build/img/sprite** are optimized and output as a single sprite in the **build/img** directory.
+
+To use this task, execute the following command:
+
+```
+grunt optimize
+```
