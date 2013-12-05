@@ -1,0 +1,25 @@
+$facebook2x: 0px 0px 0px 0px 128px 128px 258px 128px '../img/sprite@2x.png' 258 128;
+$twitter2x: 130px 0px -130px 0px 128px 128px 258px 128px '../img/sprite@2x.png' 258 128;
+
+@mixin sprite2x-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite2x-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite2x-position($sprite) {
+  background-position: nth($sprite, 3) nth($sprite, 4);
+}
+
+@mixin sprite2x-image($sprite) {
+  background-image: url('#{nth($sprite, 9)}'); /*ImageEmbed:skip*/
+}
+
+@mixin sprite2x($sprite) {
+  @include sprite2x-image($sprite);
+  @include sprite2x-position($sprite);
+  @include sprite2x-height($sprite);
+  @include sprite2x-width($sprite);
+}

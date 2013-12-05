@@ -2,9 +2,12 @@
 @import "partials/base";
 
 // Partials
+@import "partials/mixins";
+@import "partials/sprite";
+@import "partials/sprite@2x";
 @import "partials/normalize";
 @import "partials/typography";
 @import "partials/layout";
 
 // Modules
-@import "modules/sprite";
+@import "modules/sprites";

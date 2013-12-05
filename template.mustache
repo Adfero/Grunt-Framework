@@ -1,0 +1,33 @@
+{
+  // Default options
+  'functions': true
+}
+
+{{#items}}
+${{name}}: {{px.x}} {{px.y}} {{px.offset_x}} {{px.offset_y}} {{px.width}} {{px.height}} {{px.total_width}} {{px.total_height}} '{{{escaped_image}}}' {{total_width}} {{total_height}};
+{{/items}}
+
+{{#options.functions}}
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  background-position: nth($sprite, 3) nth($sprite, 4);
+}
+
+@mixin sprite-image($sprite) {
+  background-image: url('#{nth($sprite, 9)}'); /*ImageEmbed:skip*/
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-height($sprite);
+  @include sprite-width($sprite);
+}
+{{/options.functions}}

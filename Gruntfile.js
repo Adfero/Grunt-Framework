@@ -99,7 +99,15 @@ module.exports = function(grunt) {
 
 		// Image tasks
 		imagemin: {
-			dynamic: {   
+			content: {   
+				files: [{
+					expand: true,
+					cwd: 'assets/images',
+					src: ['**/*.{png,jpg,gif}'],
+					dest: 'public/assets/images'
+				}]
+			},
+			stylesheets: {   
 				files: [{
 					expand: true,
 					cwd: 'build/img/',
@@ -110,11 +118,23 @@ module.exports = function(grunt) {
 		},
 
 		sprite: {
-			all: {
-				src: ['build/img/sprite/**.png'],
+			core: {
+				src: ['build/img/sprite/core/**.png'],
 				destImg: 'build/img/sprite.png',
-				destCSS: 'build/sass/modules/_sprite.scss',
+				destCSS: 'build/sass/partials/_sprite.scss',
 				imgPath: '../img/sprite.png',
+				cssTemplate: 'template.mustache',
+				algorithm: 'binary-tree',
+				padding: 1,
+				engine: 'phantomjs',
+				cssFormat: 'scss'
+			},
+			core_2x: {
+				src: ['build/img/sprite/core-2x/**.png'],
+				destImg: 'build/img/sprite@2x.png',
+				destCSS: 'build/sass/partials/_sprite@2x.scss',
+				imgPath: '../img/sprite@2x.png',
+				cssTemplate: 'template2x.mustache',
 				algorithm: 'binary-tree',
 				padding: 2,
 				engine: 'phantomjs',
@@ -127,7 +147,7 @@ module.exports = function(grunt) {
 			build: {
 				auth: {
 					host: '{{HOST}}',
-					port: 21,
+					port: 2,
 					authKey: 'key1'
 				},
 				src: 'local/path/to/files/to/upload/',
@@ -170,5 +190,5 @@ module.exports = function(grunt) {
 	 **************************/
 
 	// Local image optimization
-	grunt.registerTask('optimize', ['imagemin', 'sprite']);
+	grunt.registerTask('optimize', ['sprite', 'imagemin']);
 }
